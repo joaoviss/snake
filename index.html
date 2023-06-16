@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Snake Game</title>
+    <link rel="shortcut icon" href="./img/icon.png" type="image/png">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/drawable.js" defer></script>
+    <script src="./js/fruit.js" defer></script>
+    <script src="./js/piece.js" defer></script>
+    <script src="./js/head.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <main class="game">
+        <header class="hud">
+            <h1 class="scoreboard"><span class="score">0</span>pontos</h1>
+            <h1 class="lifeboard"><span class="life">3</span>vidas</h1>
+        </header>
+        <canvas class="board" width="600" height="600"></canvas>
+    </main>
+    <div class="controls">
+        <button id="left">&#9668;</button>
+        <button id="up">&#9650;</button>
+        <button id="right">&#9658;</button>
+        <button id="down">&#9660;</button>
+    </div>
+    <script>
+        var i = 0
+        const rate = 20
+        const scale = 30
+        const radius = scale / 2
+        const board = document.querySelector('.board')
+        const ctx = board.getContext('2d')
+        const grid = {w: board.width / scale, h: board.height / scale}
+    </script>
+</body>
+</html>

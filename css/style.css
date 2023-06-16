@@ -1,0 +1,99 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+}
+body {
+    background-color: #528;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.4rem;
+    min-height: 100%;
+    gap: 1rem;
+
+}
+.game {
+    max-width: 500px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #aaf6;
+    position: relative;
+    border-radius: 0.4em;
+}
+.board {
+    width: 100%;
+    height: 100%;
+}
+.fruits {
+    display: none;
+}
+.hud {
+    position: absolute;
+    width: 100%;
+    height: 4rem;
+    background-color: #fff1;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hud h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1em;
+}
+.hud span {
+    font-size: 2em;
+}
+.controls {
+    gap: 0.5rem;
+    display: grid;
+    grid-auto-rows: 2;
+    grid-template-columns: 3;
+    grid-template-areas: '. u .' 'l d r';
+}
+.controls button {
+    width: 5rem;
+    aspect-ratio: 1/1;
+    background-color: #888;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 1px #000;
+}
+.controls button:active {
+    box-shadow: inset 2px 2px 2px #000;
+    transform: translate(-2px, -2px);
+    font-size: 90%;
+}
+.controls button:nth-child(1) {
+    grid-area: l;
+}
+.controls button:nth-child(2) {
+    grid-area: u;
+}
+.controls button:nth-child(3) {
+    grid-area: r;
+}
+.controls button:nth-child(4) {
+    grid-area: d;
+}
+@media screen and (orientation: landscape) {
+    body {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-end;
+    }
+    .controls {
+        grid-template-rows: 3;
+        grid-template-areas: '. u .' 'l . r' '. d .';
+    }
+    .game {
+        max-height: 500px;
+        height: 100%;
+    }
+}
