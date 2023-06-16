@@ -1,4 +1,5 @@
-const snake = [new Head()]//, new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
+/*
+const snake = [new Head(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
 let fruit = new Fruit()
 const chomp = new Audio()
 chomp.src = './assets/chomp.mp3'
@@ -8,7 +9,7 @@ const lifeBoard = document.querySelector('.life')
 let life = +lifeBoard.innerHTML
 
 const eatFood = () => {
-    if(fruit.collision(snake[0])) {
+    if(fruit.hit(snake[0])) {
         chomp.play()
         scoreBoard.innerHTML = ++score
         fruit = new Fruit()
@@ -27,3 +28,6 @@ setInterval(() => {
     snake[0].update()
     fruit.draw()
 }, 200)
+// */
+let g = new Game()
+g.play()
