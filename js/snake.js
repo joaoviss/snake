@@ -1,6 +1,6 @@
 class Snake {
     constructor() {
-        this.snake = [new Head()]//, new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
+        this.snake = [new Head(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
         this.chomp = new Audio()
         this.chomp.src = './assets/chomp.mp3'
         this.death = new Audio()

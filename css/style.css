@@ -52,7 +52,7 @@ body {
 }
 .controls {
     gap: 0.5rem;
-    display: grid;
+    display: inline-grid;
     grid-auto-rows: 2;
     grid-template-columns: 3;
     grid-template-areas: '. u .' 'l d r';
@@ -82,7 +82,7 @@ body {
 .controls button:nth-child(4) {
     grid-area: d;
 }
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-width: 500px) {
     body {
         flex-direction: row;
         justify-content: space-around;

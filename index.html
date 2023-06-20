@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-SCALE=1.0">
     <title>Fruit Snake Game</title>
     <link rel="shortcut icon" href="./img/icon.png" type="image/png">
     <link rel="stylesheet" href="./css/style.css">
@@ -27,11 +27,14 @@
         <button id="down">&#9660;</button>
     </div>
     <script>
-        const scale = 30
-        const radius = scale / 2
-        const board = document.querySelector('.board')
-        const ctx = board.getContext('2d')
-        const grid = {w: board.width / scale, h: board.height / scale}
+        const SCALE = 30
+        const RADIUS = SCALE / 2
+        const BOARD = document.querySelector('.board')
+        const CTX = BOARD.getContext('2d')
+        const GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE}
+        const RATE = 20
+        var step = 0
+        var loop
     </script>
 </body>
 </html>

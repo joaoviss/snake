@@ -4,10 +4,10 @@ class Drawable {
         this.y = 10
     }
     draw() {
-        ctx.arc(this.x * scale + radius, this.y * scale + radius,+ radius, 0, Math.PI * 2)
-        // ctx.rect(this.x * scale, this.y * scale, scale, scale)
-        ctx.fill()
-        ctx.stroke()
+        CTX.arc(this.x * SCALE + RADIUS, this.y * SCALE + RADIUS,+ RADIUS, 0, Math.PI * 2)
+        // CTX.rect(this.x * SCALE, this.y * SCALE, SCALE, SCALE)
+        CTX.fill()
+        CTX.stroke()
     }
     hit = (that) => ((this.x == that.x) && (this.y == that.y)) ? true : false
 }
@@ -20,18 +20,18 @@ class Head extends Drawable {
         this.image.src = './img/eyes.png'
     }
     draw() {
-        ctx.beginPath()
+        CTX.beginPath()
         super.draw()
-        ctx.fillStyle = '#f00'
-        ctx.fill()
-        ctx.stroke()
-        ctx.drawImage(this.image, this.x * scale, this.y * scale, scale, scale)
+        CTX.fillStyle = '#f00'
+        CTX.fill()
+        CTX.stroke()
+        CTX.drawImage(this.image, this.x * SCALE, this.y * SCALE, SCALE, SCALE)
     }
     update() {
         if ((this.x > 0) ||
         (this.y > 0) ||
-        (this.x <= grid.w) ||
-        (this.y <= grid.h)) {
+        (this.x <= GRID.w) ||
+        (this.y <= GRID.h)) {
             this.x += this.speed.x
             this.y += this.speed.y
             this.draw()
@@ -44,9 +44,9 @@ class Piece extends Drawable {
         super()    
     }
     draw() {
-        ctx.beginPath()
+        CTX.beginPath()
         super.draw()
-        ctx.fillStyle = '#fa2'
+        CTX.fillStyle = '#fa2'
     }
     update(x, y) {
         this.x = x
@@ -58,13 +58,13 @@ class Piece extends Drawable {
 class Fruit extends Drawable {
     constructor() {
         super()
-        this.x = ~~(Math.random() * (grid.w - 1))
-        this.y = ~~(Math.random() * (grid.h - 1))
+        this.x = ~~(Math.random() * (GRID.w - 1))
+        this.y = ~~(Math.random() * (GRID.h - 1))
         this.pic = ~~(Math.random() * 21)
         this.image = new Image()
         this.image.src = './img/fruits-21.png'
     }
     draw() {
-        ctx.drawImage(this.image, this.pic * scale, 0, scale, scale, this.x * scale, this.y * scale, scale, scale)
+        CTX.drawImage(this.image, this.pic * SCALE, 0, SCALE, SCALE, this.x * SCALE, this.y * SCALE, SCALE, SCALE)
     }
 }

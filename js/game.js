@@ -16,7 +16,7 @@ class Game {
     play() {
         this.snake.init()
         const loop = setInterval(() => {
-            ctx.clearRect(0, 0, board.width, board.height)
+            CTX.clearRect(0, 0, BOARD.width, BOARD.height)
             this.fruit.draw()
             this.snake.update()
             this.eat()
