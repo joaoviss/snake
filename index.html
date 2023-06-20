@@ -13,10 +13,10 @@
     <script src="./js/script.js" defer></script>
 </head>
 <body>
-    <main class="game">
+    <mai+n class="game">
         <header class="hud">
-            <h1 class="scoreboard"><span class="score">0</span>pontos</h1>
-            <h1 class="lifeboard"><span class="life">3</span>vidas</h1>
+            <h1 class="scoreboard"><span class="score"></span>pontos</h1>
+            <h1 class="lifeboard"><span class="life"></span>vidas</h1>
         </header>
         <canvas class="board" width="600" height="600"></canvas>
     </main>
@@ -27,14 +27,11 @@
         <button id="down">&#9660;</button>
     </div>
     <script>
-        const SCALE = 30
-        const RADIUS = SCALE / 2
-        const BOARD = document.querySelector('.board')
-        const CTX = BOARD.getContext('2d')
-        const GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE}
-        const RATE = 20
-        var step = 0
-        var loop
+        const SCALE = 30, RADIUS = SCALE / 2,
+        BOARD = document.querySelector('.board'),
+        CTX = BOARD.getContext('2d'),
+        GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE}
+        let life = 3, score = 0
     </script>
 </body>
 </html>

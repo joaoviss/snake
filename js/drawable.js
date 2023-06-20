@@ -5,7 +5,6 @@ class Drawable {
     }
     draw() {
         CTX.arc(this.x * SCALE + RADIUS, this.y * SCALE + RADIUS,+ RADIUS, 0, Math.PI * 2)
-        // CTX.rect(this.x * SCALE, this.y * SCALE, SCALE, SCALE)
         CTX.fill()
         CTX.stroke()
     }
@@ -28,15 +27,14 @@ class Head extends Drawable {
         CTX.drawImage(this.image, this.x * SCALE, this.y * SCALE, SCALE, SCALE)
     }
     update() {
-        if ((this.x > 0) ||
-        (this.y > 0) ||
-        (this.x <= GRID.w) ||
-        (this.y <= GRID.h)) {
-            this.x += this.speed.x
-            this.y += this.speed.y
-            this.draw()
-        }
+        if (this.speed.x < 0) this.x += (this.x >= 0) ? this.speed.x : GRID.w
+        if (this.speed.x > 0) this.x += (this.x < GRID.w) ? this.speed.x : -GRID.w
+        if (this.speed.y < 0) this.y += (this.y >= 0) ? this.speed.y : GRID.h
+        if (this.speed.y > 0) this.y += (this.y < GRID.h) ? this.speed.y : -GRID.w
+        this.draw()
     }
+    reset = () => [this.x, this.y] = [0, 10]
+    out = () => ((this.x < 0) || (this.y < 0) || (this.x >= GRID.w) || (this.y >= GRID.h)) ? true : false
 }
 
 class Piece extends Drawable {
@@ -53,6 +51,7 @@ class Piece extends Drawable {
         this.y = y
         this.draw()
     }
+
 }
 
 class Fruit extends Drawable {

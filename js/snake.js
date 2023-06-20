@@ -1,19 +1,14 @@
 class Snake {
     constructor() {
-        this.snake = [new Head(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
-        this.chomp = new Audio()
-        this.chomp.src = './assets/chomp.mp3'
-        this.death = new Audio()
-        this.death.src = './assets/death.mp3'
-
+        this.body = [new Head(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
     }
     init() {
         addEventListener('keydown', ({keyCode}) => {
             switch (keyCode) {
-                case 37: if (this.snake[0].speed.x == 0) this.snake[0].speed = {x: -1, y: 0}; break;
-                case 38: if (this.snake[0].speed.y == 0) this.snake[0].speed = {x: 0, y: -1}; break;
-                case 39: if (this.snake[0].speed.x == 0) this.snake[0].speed = {x: 1, y: 0}; break;
-                case 40: if (this.snake[0].speed.y == 0) this.snake[0].speed = {x: 0, y: 1}; break;
+                case 37: if (this.body[0].speed.x == 0) this.body[0].speed = {x: -1, y: 0}; break;
+                case 38: if (this.body[0].speed.y == 0) this.body[0].speed = {x: 0, y: -1}; break;
+                case 39: if (this.body[0].speed.x == 0) this.body[0].speed = {x: 1, y: 0}; break;
+                case 40: if (this.body[0].speed.y == 0) this.body[0].speed = {x: 0, y: 1}; break;
                 default: break;
             }
         })
@@ -21,26 +16,26 @@ class Snake {
         .forEach(button => {
             button.addEventListener('click', ({target}) => {
                 switch (target.id) {
-                    case 'left': if (this.snake[0].speed.x == 0) this.snake[0].speed = {x: -1, y: 0}; break;
-                    case 'up': if (this.snake[0].speed.y == 0) this.snake[0].speed = {x: 0, y: -1}; break;
-                    case 'right': if (this.snake[0].speed.x == 0) this.snake[0].speed = {x: 1, y: 0}; break;
-                    case 'down': if (this.snake[0].speed.y == 0) this.snake[0].speed = {x: 0, y: 1}; break;
+                    case 'left': if (this.body[0].speed.x == 0) this.body[0].speed = {x: -1, y: 0}; break;
+                    case 'up': if (this.body[0].speed.y == 0) this.body[0].speed = {x: 0, y: -1}; break;
+                    case 'right': if (this.body[0].speed.x == 0) this.body[0].speed = {x: 1, y: 0}; break;
+                    case 'down': if (this.body[0].speed.y == 0) this.body[0].speed = {x: 0, y: 1}; break;
                     default: break;
                 }
             })
         })
     }
-    eat(fruit) {
-        if(this.snake[0].hit(fruit)) {
-            this.chomp.play()
-            this.snake.push(new Piece())
-            return true
-        }
-    }
+    eat = (fruit) => this.body[0].hit(fruit)
+    grow = () => this.body.push(new Piece())
+    out = () => this.body[0].out()
+    crash = () => this.body.slice(1,-1)
+        .map(piece => piece.hit(this.body[0]))
+        .reduce((acc, cur) => acc || cur, false)
+    reset = () => this.body[0].reset()
     update() {
-        for (let i = this.snake.length - 1; i > 0; i--) {
-            this.snake[i].update(this.snake[i - 1].x, this.snake[i - 1].y)
+        for (let i = this.body.length - 1; i > 0; i--) {
+            this.body[i].update(this.body[i - 1].x, this.body[i - 1].y)
         }
-        this.snake[0].update()
+        this.body[0].update()
     }
 }
