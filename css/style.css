@@ -11,14 +11,13 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 0.4rem;
-    min-height: 100%;
+    padding: 2rem;
+    min-height: 100vh;
     gap: 1rem;
-
 }
 .game {
-    max-width: 500px;
-    width: 100%;
+    max-height: 500px;
+    height: 100%;
     aspect-ratio: 1/1;
     background-color: #aaf6;
     position: relative;
@@ -27,9 +26,6 @@ body {
 .board {
     width: 100%;
     height: 100%;
-}
-.fruits {
-    display: none;
 }
 .hud {
     position: absolute;
@@ -53,20 +49,19 @@ body {
 .controls {
     gap: 0.5rem;
     display: inline-grid;
-    grid-auto-rows: 2;
+    grid-template-rows: 2;
     grid-template-columns: 3;
     grid-template-areas: '. u .' 'l d r';
 }
 .controls button {
     width: 5rem;
     aspect-ratio: 1/1;
-    background-color: #888;
+    background: radial-gradient(#fff, #444);
     border: none;
-    border-radius: 0.5rem;
-    box-shadow: 5px 5px 1px #000;
+    border-radius: 2.5rem;
 }
 .controls button:active {
-    box-shadow: inset 2px 2px 2px #000;
+    box-shadow: inset 4px 4px 4px #000;
     transform: translate(-2px, -2px);
     font-size: 90%;
 }
@@ -82,18 +77,16 @@ body {
 .controls button:nth-child(4) {
     grid-area: d;
 }
-@media screen and (orientation: landscape) and (max-width: 500px) {
+@media screen and (orientation: landscape) {
     body {
         flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-end;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5rem;
     }
     .controls {
         grid-template-rows: 3;
         grid-template-areas: '. u .' 'l . r' '. d .';
-    }
-    .game {
-        max-height: 500px;
-        height: 100%;
+        gap: 0;
     }
 }

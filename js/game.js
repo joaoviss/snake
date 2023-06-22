@@ -17,7 +17,6 @@ class Game {
             this.snake.grow()
             this.chomp.play()
             this.scoreBoard.innerHTML = ++score
-            // if (this.score % 10 == 0) this.lifeBoard.innerHTML = ++this.lives
         }
         if (this.snake.crash()) {
             this.death.play()
@@ -29,6 +28,7 @@ class Game {
             this.lifeBoard.innerHTML = --this.lives
         }
     }
+    
     round() {
         CTX.clearRect(0, 0, BOARD.width, BOARD.height)
         this.fruit.draw()
@@ -39,6 +39,9 @@ class Game {
         this.snake.init()
         this.lifeBoard.innerHTML = this.lives
         this.scoreBoard.innerHTML = score
-        const loop = setInterval(() => (this.lives <= 0) ? clearInterval(loop) : this.round(), 1000/3)
+        const loop = setInterval(() => {
+            if (this.lives <= 0) clearInterval(loop)
+            else this.round()
+        }, 1000/4)
     }
 }

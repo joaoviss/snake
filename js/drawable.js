@@ -34,7 +34,7 @@ class Head extends Drawable {
         this.draw()
     }
     reset = () => [this.x, this.y] = [0, 10]
-    out = () => ((this.x < 0) || (this.y < 0) || (this.x >= GRID.w) || (this.y >= GRID.h)) ? true : false
+    out = () => ((this.x < 0) || (this.y < 0) || (this.x >= GRID.w) || (this.y >= GRID.h))
 }
 
 class Piece extends Drawable {
