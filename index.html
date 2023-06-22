@@ -13,12 +13,20 @@
     <script src="./js/script.js" defer></script>
 </head>
 <body>
+    <div class="assets">
+        <img src="./img/eyes.png" class="eyes">
+        <img src="./img/fruits-21.png" class="fruits">
+        <audio src="./assets/chomp.mp3" class="chomp-sfx"></audio>
+        <audio src="./assets/death.mp3" class="death-sfx"></audio>
+        <audio src="./assets/oops.m4a" class="oops-sfx"></audio>
+    </div>
     <main class="game">
         <header class="hud">
             <h1 class="scoreboard"><span class="score"></span>pontos</h1>
             <h1 class="lifeboard"><span class="life"></span>vidas</h1>
         </header>
         <canvas class="board" width="600" height="600"></canvas>
+        <!-- <div class="start"></div> -->
     </main>
     <div class="controls">
         <button id="left">&#9668;</button>

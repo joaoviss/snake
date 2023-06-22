@@ -6,25 +6,31 @@ class Game {
         this.scoreBoard = document.querySelector('.score')
         this.score = +this.scoreBoard.innerHTML
         this.lifeBoard = document.querySelector('.life')
+//*
+        this.chomp_sfx = document.querySelector('.chomp-sfx')
+        this.death_sfx = document.querySelector('.death-sfx')
+        this.oops_sfx = document.querySelector('.oops-sfx')
+/*/
         this.chomp = new Audio()
         this.chomp.src = './assets/chomp.mp3'
         this.death = new Audio()
         this.death.src = './assets/death.mp3'
+//*/
     }
     collision() {
         if (this.snake.eat(this.fruit)) {
             this.fruit = new Fruit()
             this.snake.grow()
-            this.chomp.play()
+            this.chomp_sfx.play()
             this.scoreBoard.innerHTML = ++score
         }
         if (this.snake.crash()) {
-            this.death.play()
-            this.snake.reset() 
+            this.death_sfx.play()
+            et() 
             this.lifeBoard.innerHTML = --this.lives
         }
         if (this.snake.out()) {
-            this.death.play()
+            this.death_sfx.play()
             this.lifeBoard.innerHTML = --this.lives
         }
     }
@@ -40,8 +46,10 @@ class Game {
         this.lifeBoard.innerHTML = this.lives
         this.scoreBoard.innerHTML = score
         const loop = setInterval(() => {
-            if (this.lives <= 0) clearInterval(loop)
-            else this.round()
+            if (this.lives <= 0) {
+                this.oops_sfx.play()
+                clearInterval(loop)
+            } else this.round()
         }, 1000/4)
     }
 }

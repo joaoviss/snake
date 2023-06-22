@@ -8,7 +8,7 @@ class Drawable {
         CTX.fill()
         CTX.stroke()
     }
-    hit = (that) => ((this.x == that.x) && (this.y == that.y)) ? true : false
+    hit = (that) => (this.x == that.x) && (this.y == that.y)
 }
 
 class Head extends Drawable {
@@ -34,7 +34,7 @@ class Head extends Drawable {
         this.draw()
     }
     reset = () => [this.x, this.y] = [0, 10]
-    out = () => ((this.x < 0) || (this.y < 0) || (this.x >= GRID.w) || (this.y >= GRID.h))
+    out = () => (this.x < 0) || (this.y < 0) || (this.x >= GRID.w) || (this.y >= GRID.h)
 }
 
 class Piece extends Drawable {
