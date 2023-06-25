@@ -17,6 +17,30 @@ class Head extends Drawable {
         this.speed = {x: 1, y: 0}
         this.image = new Image()
         this.image.src = './img/eyes.png'
+        this.init()
+    }
+    init() {
+        addEventListener('keydown', ({keyCode}) => {
+            switch (keyCode) {
+                case 37: if (this.speed.x == 0) this.speed = {x: -1, y: 0}; break;
+                case 38: if (this.speed.y == 0) this.speed = {x: 0, y: -1}; break;
+                case 39: if (this.speed.x == 0) this.speed = {x: 1, y: 0}; break;
+                case 40: if (this.speed.y == 0) this.speed = {x: 0, y: 1}; break;
+                default: break;
+            }
+        })
+        document.querySelectorAll('.controls button')
+        .forEach(button => {
+            button.addEventListener('click', ({target}) => {
+                switch (target.id) {
+                    case 'left': if (this.speed.x == 0) this.speed = {x: -1, y: 0}; break;
+                    case 'up': if (this.speed.y == 0) this.speed = {x: 0, y: -1}; break;
+                    case 'right': if (this.speed.x == 0) this.speed = {x: 1, y: 0}; break;
+                    case 'down': if (this.speed.y == 0) this.speed = {x: 0, y: 1}; break;
+                    default: break;
+                }
+            })
+        })
     }
     draw() {
         CTX.beginPath()
@@ -27,10 +51,15 @@ class Head extends Drawable {
         CTX.drawImage(this.image, this.x * SCALE, this.y * SCALE, SCALE, SCALE)
     }
     update() {
+        /*
         if (this.speed.x < 0) this.x += (this.x >= 0) ? this.speed.x : GRID.w
         if (this.speed.x > 0) this.x += (this.x < GRID.w) ? this.speed.x : -GRID.w
         if (this.speed.y < 0) this.y += (this.y >= 0) ? this.speed.y : GRID.h
         if (this.speed.y > 0) this.y += (this.y < GRID.h) ? this.speed.y : -GRID.w
+        /*/
+        this.x += this.speed.x
+        this.y += this.speed.y
+        //*/
         this.draw()
     }
     reset = () => [this.x, this.y] = [0, 10]

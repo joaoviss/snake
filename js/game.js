@@ -1,36 +1,28 @@
 class Game {
     constructor(lives = 3) {
+        this.paused = false
         this.lives = lives
+        this.score = 0
         this.snake = new Snake()
         this.fruit = new Fruit()
         this.scoreBoard = document.querySelector('.score')
-        this.score = +this.scoreBoard.innerHTML
         this.lifeBoard = document.querySelector('.life')
-//*
         this.chomp_sfx = document.querySelector('.chomp-sfx')
         this.death_sfx = document.querySelector('.death-sfx')
         this.oops_sfx = document.querySelector('.oops-sfx')
-/*/
-        this.chomp = new Audio()
-        this.chomp.src = './assets/chomp.mp3'
-        this.death = new Audio()
-        this.death.src = './assets/death.mp3'
-//*/
     }
     collision() {
         if (this.snake.eat(this.fruit)) {
             this.fruit = new Fruit()
             this.snake.grow()
             this.chomp_sfx.play()
-            this.scoreBoard.innerHTML = ++score
+            this.scoreBoard.innerHTML = ++this.score
         }
-        if (this.snake.crash()) {
+        if ((this.snake.crash()) || (this.snake.out())) {
             this.death_sfx.play()
-            et() 
-            this.lifeBoard.innerHTML = --this.lives
-        }
-        if (this.snake.out()) {
-            this.death_sfx.play()
+            this.paused = true
+            setTimeout(() => this.paused = false, 1000)
+            this.snake.reset()
             this.lifeBoard.innerHTML = --this.lives
         }
     }
@@ -42,14 +34,17 @@ class Game {
         this.collision()
     }
     play() {
-        this.snake.init()
         this.lifeBoard.innerHTML = this.lives
         this.scoreBoard.innerHTML = score
         const loop = setInterval(() => {
             if (this.lives <= 0) {
                 this.oops_sfx.play()
                 clearInterval(loop)
-            } else this.round()
+                BTN_START.style.display = 'block'
+                BTN_DIR.forEach(btn => {
+                    btn.style.display = 'none'
+                })
+            } else if (!this.paused) this.round()
         }, 1000/4)
     }
 }

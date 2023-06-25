@@ -26,19 +26,22 @@
             <h1 class="lifeboard"><span class="life"></span>vidas</h1>
         </header>
         <canvas class="board" width="600" height="600"></canvas>
-        <!-- <div class="start"></div> -->
+        <button class="start">Clique para começar</button>
     </main>
     <div class="controls">
-        <button id="left">&#9668;</button>
-        <button id="up">&#9650;</button>
-        <button id="right">&#9658;</button>
-        <button id="down">&#9660;</button>
+        <button class="btn btn-dir" id="left">&#9668;</button>
+        <button class="btn btn-dir" id="up">&#9650;</button>
+        <button class="btn btn-dir" id="right">&#9658;</button>
+        <button class="btn btn-dir" id="down">&#9660;</button>
+        <button class="btn btn-start">go</button>
     </div>
     <script>
         const SCALE = 30, RADIUS = SCALE / 2,
         BOARD = document.querySelector('.board'),
         CTX = BOARD.getContext('2d'),
-        GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE}
+        GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE},
+        BTN_START = document.querySelector('.btn-start'),
+        BTN_DIR = document.querySelectorAll('.btn-dir')
         let score = 0
     </script>
 </body>
