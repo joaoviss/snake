@@ -51,18 +51,14 @@ class Head extends Drawable {
         CTX.drawImage(this.image, this.x * SCALE, this.y * SCALE, SCALE, SCALE)
     }
     update() {
-        /*
-        if (this.speed.x < 0) this.x += (this.x >= 0) ? this.speed.x : GRID.w
-        if (this.speed.x > 0) this.x += (this.x < GRID.w) ? this.speed.x : -GRID.w
-        if (this.speed.y < 0) this.y += (this.y >= 0) ? this.speed.y : GRID.h
-        if (this.speed.y > 0) this.y += (this.y < GRID.h) ? this.speed.y : -GRID.w
-        /*/
         this.x += this.speed.x
         this.y += this.speed.y
-        //*/
         this.draw()
     }
-    reset = () => [this.x, this.y] = [0, 10]
+    reset() {
+        [this.x, this.y] = [0, 10]
+        this.speed = {1, 0}
+    }
     out = () => (this.x < 0) || (this.y < 0) || (this.x >= GRID.w) || (this.y >= GRID.h)
 }
 
