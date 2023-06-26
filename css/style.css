@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     min-height: 100vh;
     gap: 1rem;
 }
@@ -52,11 +52,10 @@ body {
     font-size: 2em;
 }
 .controls {
-    gap: 0.5rem;
     display: inline-grid;
-    grid-template-rows: 3;
-    grid-template-columns: 2;
-    grid-template-areas: 's u .' 'l d r';
+    grid-template-rows: 2;
+    grid-template-columns: 3;
+    grid-template-areas: '. u .' 'l d r';
 }
 .btn {
     width: 5rem;
@@ -64,11 +63,11 @@ body {
     font-size: 120%;
     border: none;
     border-radius: 2.5rem;
-    transition: 1s;
+    box-shadow: 4px 4px 4px #000;
 }
 .btn-dir {
     background: radial-gradient(#fff, #333);
-    display: none;
+    visibility: hidden;
 }
 .btn-start {
     background: radial-gradient(#dfd, #242);
@@ -90,8 +89,30 @@ body {
 .btn:nth-child(4) {
     grid-area: d;
 }
-.btn:nth-child(5) {
-    grid-area: l;
+.btn-start {
+    grid-area: d;
+}
+.start {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('../img/field.png');
+}
+.open {
+    animation: open 0.5s 1 forwards;
+}
+.close {
+    animation: closed 0.5s 1 forwards;
+}
+@keyframes open {
+    from {top: 0; display: inline-block;}
+    to {top: -100%; display: none;}
+}
+@keyframes closed {
+    from {top: -100%; display: none;}
+    to {top: 0; display: inline-block;}
 }
 @media screen and (orientation: landscape) {
     body {
@@ -101,15 +122,12 @@ body {
         padding: 2em;
     }
     .controls {
-        grid-template-rows: 2;
+        grid-template-rows: 3;
         grid-template-columns: 3;
-        grid-template-areas: 's u' 'l r' '. d';
+        grid-template-areas: '. u .' 'l s r' '. d .';
         gap: 0;
     }
-    .btn-dir {
-        display: none;
-   }
     .btn-start {
-        display: inline-block;
+        grid-area: s;
     }
 }

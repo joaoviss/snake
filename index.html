@@ -21,22 +21,23 @@
         <audio src="./assets/oops.m4a" class="oops-sfx"></audio>
     </div>
     <main class="game">
+        <div class="start"></div>
         <header class="hud">
-            <h1 class="scoreboard"><span class="score"></span>pontos</h1>
-            <h1 class="lifeboard"><span class="life"></span>vidas</h1>
+            <h1 class="scoreboard"><span class="score">0</span>pontos</h1>
+            <h1 class="lifeboard"><span class="life">3</span>vidas</h1>
         </header>
         <canvas class="board" width="600" height="600"></canvas>
-        <button class="start">Clique para começar</button>
     </main>
     <div class="controls">
         <button class="btn btn-dir" id="left">&#9668;</button>
         <button class="btn btn-dir" id="up">&#9650;</button>
         <button class="btn btn-dir" id="right">&#9658;</button>
         <button class="btn btn-dir" id="down">&#9660;</button>
-        <button class="btn btn-start">go</button>
+        <button class="btn btn-start">Iniciar</button>
     </div>
     <script>
         const SCALE = 30, RADIUS = SCALE / 2,
+        START = document.querySelector('.start'),
         BOARD = document.querySelector('.board'),
         CTX = BOARD.getContext('2d'),
         GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE},

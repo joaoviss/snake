@@ -40,10 +40,11 @@ class Game {
             if (this.lives <= 0) {
                 this.oops_sfx.play()
                 clearInterval(loop)
-                BTN_START.style.display = 'block'
+                BTN_START.style.visibility = 'visible'
                 BTN_DIR.forEach(btn => {
-                    btn.style.display = 'none'
+                    btn.style.visibility = 'hidden'
                 })
+                START.classList.remove('open')
             } else if (!this.paused) this.round()
         }, 1000/4)
     }

@@ -29,8 +29,7 @@ class Head extends Drawable {
                 default: break;
             }
         })
-        document.querySelectorAll('.controls button')
-        .forEach(button => {
+        BTN_DIR.forEach(button => {
             button.addEventListener('click', ({target}) => {
                 switch (target.id) {
                     case 'left': if (this.speed.x == 0) this.speed = {x: -1, y: 0}; break;
