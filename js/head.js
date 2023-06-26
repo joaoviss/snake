@@ -15,8 +15,8 @@ class Head extends Drawable {
         ctx.drawImage(this.image, this.x * scale, this.y * scale, scale, scale)
     }
     update() {
-        if ((this.x > 0) || (this.y > 0) || (this.x <= grid.w) ||
-  (this.y <= grid.h)) {
+        if ((this.x > 0) || (this.y > 0) || 
+            (this.x <= grid.w) || (this.y <= grid.h)) {
             this.x += this.speed.x
             this.y += this.speed.y
         }
@@ -24,6 +24,6 @@ class Head extends Drawable {
     }
     reset() {
         [this.x, this.y] = [0, 10]
-        this.speed = {1, 0}
+        this.speed = {x: 1, y: 0}
     }
 }
