@@ -57,7 +57,7 @@ class Head extends Drawable {
     }
     reset() {
         [this.x, this.y] = [0, 10]
-        this.speed = {1, 0}
+        this.speed = {x: 1, y: 0}
     }
     out = () => (this.x < 0) || (this.y < 0) || (this.x >= GRID.w) || (this.y >= GRID.h)
 }
