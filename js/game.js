@@ -29,7 +29,7 @@ class Game {
     }
     
     round() {
-        CTX.clearRect(0, 0, BOARD.w, BOARD.h)
+        CTX.clearRect(0, 0, BOARD.width, BOARD.height)
         this.fruit.draw()
         this.snake.update()
         this.collision()
