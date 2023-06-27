@@ -1,4 +1,5 @@
 class Game {
+    loop
     constructor(lives = 3) {
         this.paused = false
         this.lives = lives
@@ -28,24 +29,30 @@ class Game {
     }
     
     round() {
-        CTX.clearRect(0, 0, BOARD.width, BOARD.height)
+        CTX.clearRect(0, 0, BOARD.w, BOARD.h)
         this.fruit.draw()
         this.snake.update()
         this.collision()
     }
+    died() {
+        this.oops_sfx.play()
+        clearInterval(this.loop)
+        BTN_START.style.visibility = 'visible'
+        BTN_DIR.forEach(btn => {
+            btn.style.visibility = 'hidden'
+        })
+        START.classList.toggle('close')
+        START.classList.toggle('open')
+    }
     play() {
         this.lifeBoard.innerHTML = this.lives
         this.scoreBoard.innerHTML = score
-        const loop = setInterval(() => {
-            if (this.lives <= 0) {
-                this.oops_sfx.play()
-                clearInterval(loop)
-                BTN_START.style.visibility = 'visible'
-                BTN_DIR.forEach(btn => {
-                    btn.style.visibility = 'hidden'
-                })
-                START.classList.remove('open')
-            } else if (!this.paused) this.round()
+        this.loop = setInterval(() => {
+            if (this.lives <= 0)
+                this.died()
+            else
+                if (!this.paused)
+                    this.round()
         }, 1000/4)
     }
 }

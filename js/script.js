@@ -1,5 +1,6 @@
 const gameStart = () => {
-    START.classList.add('open')
+    START.classList.toggle('close')
+    START.classList.toggle('open');;
     BTN_START.style.visibility = 'hidden'
     BTN_DIR.forEach(btn => {
         btn.style.visibility = 'visible'
