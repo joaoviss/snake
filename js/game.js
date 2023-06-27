@@ -12,6 +12,18 @@ class Game {
         this.death_sfx = document.querySelector('.death-sfx')
         this.oops_sfx = document.querySelector('.oops-sfx')
     }
+    rank(score) {
+        if(localStorage.length == 0) {
+            localStorage.setItem('ranking', `[${score}]`)
+        } else {
+            let result = localStorage.getItem('ranking')
+            result = JSON.parse(result)
+            result.push(score)
+            result = JSON.stringify(result)
+            localStorage.setItem('ranking', result)
+        }
+    }
+    
     collision() {
         if (this.snake.eat(this.fruit)) {
             this.fruit = new Fruit()
@@ -19,7 +31,7 @@ class Game {
             this.chomp_sfx.play()
             this.scoreBoard.innerHTML = ++this.score
         }
-        if ((this.snake.crash()) || (this.snake.out())) {
+         if ((this.snake.crash()) || (this.snake.out())) {
             this.death_sfx.play()
             this.paused = true
             setTimeout(() => this.paused = false, 1000)
@@ -34,25 +46,29 @@ class Game {
         this.snake.update()
         this.collision()
     }
-    died() {
+
+    die() {
         this.oops_sfx.play()
         clearInterval(this.loop)
         BTN_START.style.visibility = 'visible'
         BTN_DIR.forEach(btn => {
             btn.style.visibility = 'hidden'
         })
+        if (this.score != 0) this.rank(this.score)
         START.classList.toggle('close')
         START.classList.toggle('open')
+        display()
     }
+
     play() {
         this.lifeBoard.innerHTML = this.lives
         this.scoreBoard.innerHTML = score
         this.loop = setInterval(() => {
             if (this.lives <= 0)
-                this.died()
+                this.die()
             else
                 if (!this.paused)
                     this.round()
-        }, 1000/4)
+        }, 350)
     }
 }

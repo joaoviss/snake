@@ -1,3 +1,11 @@
+const display = () => {
+    let ranking = localStorage.getItem('ranking')
+    ranking = JSON.parse(ranking)
+    ranking.sort().reverse()
+    RANKING.innerHTML = ''
+    ranking.forEach(score => RANKING.innerHTML += `<p>${score}</p>`)
+}
+
 const gameStart = () => {
     START.classList.toggle('close')
     START.classList.toggle('open');;
@@ -10,5 +18,6 @@ const gameStart = () => {
 }
 
 addEventListener('DOMContentLoaded', () => {
+    display()
     BTN_START.addEventListener('click', gameStart, false)
 })

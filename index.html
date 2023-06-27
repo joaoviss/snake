@@ -26,7 +26,9 @@
             <h1 class="lifeboard"><span class="life">3</span>vidas</h1>
         </header>
         <canvas class="board" width="600" height="600"></canvas>
-        <div class="start close"></div>
+        <div class="start close">
+            <div class="ranking"></div>
+        </div>
     </main>
     <div class="controls">
         <button class="btn btn-dir" id="left">&#9668;</button>
@@ -38,6 +40,7 @@
     <script>
         const SCALE = 30, RADIUS = SCALE / 2,
         START = document.querySelector('.start'),
+        RANKING = document.querySelector('.ranking'),
         BOARD = document.querySelector('.board'),
         CTX = BOARD.getContext('2d'),
         GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE},
