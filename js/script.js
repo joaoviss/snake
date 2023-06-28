@@ -3,7 +3,11 @@ const display = () => {
     ranking = JSON.parse(ranking)
     ranking.sort().reverse()
     RANKING.innerHTML = ''
-    ranking.forEach(score => RANKING.innerHTML += `<p>${score}</p>`)
+    ranking.forEach((score, I) => {
+        let div = document.createElement('div')
+        div.textContent = score
+        RANKING.appendChild(div)
+    })
 }
 
 const gameStart = () => {
