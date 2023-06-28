@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,13 @@
         </header>
         <canvas class="board" width="600" height="600"></canvas>
         <div class="start close">
-            <div class="ranking"></div>
+            <div class="ranking">
+                <p class="item">
+                    <span>Hora</span>
+                    <span>pontos</span>
+                </p>
+                <div></div>
+            </div>
         </div>
     </main>
     <div class="controls">
@@ -37,10 +43,16 @@
         <button class="btn btn-dir" id="down">&#9660;</button>
         <button class="btn btn-start">Iniciar</button>
     </div>
+        <template class="template">
+            <pre class="item">
+                <span class="time">$time</span>
+                <span class="score">$score</span>
+            </pre>
+        </template>
     <script>
         const SCALE = 30, RADIUS = SCALE / 2,
         START = document.querySelector('.start'),
-        RANKING = document.querySelector('.ranking'),
+        RANKING = document.querySelector('.ranking div'),
         BOARD = document.querySelector('.board'),
         CTX = BOARD.getContext('2d'),
         GRID = {w: BOARD.width / SCALE, h: BOARD.height / SCALE},

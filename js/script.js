@@ -1,13 +1,18 @@
 const display = () => {
-    let ranking = localStorage.getItem('ranking')
-    ranking = JSON.parse(ranking)
-    ranking.sort().reverse()
-    RANKING.innerHTML = ''
-    ranking.forEach((score, I) => {
-        let div = document.createElement('div')
-        div.textContent = score
-        RANKING.appendChild(div)
-    })
+    if (localStorage) {
+        let ranking = localStorage.getItem('ranking')
+        ranking = JSON.parse(ranking)
+        ranking = Array.from(ranking)
+        RANKING.innerHTML = ''
+        for (let i = 0; i < 12; i++) {
+            if (ranking[i] != undefined) {
+                let template = document.querySelector('.template').innerHTML
+                template = template.replace('$time', ranking[i].time)
+                template = template.replace('$score', ranking[i].score)
+                RANKING.innerHTML += template
+            }
+        }
+    }
 }
 
 const gameStart = () => {

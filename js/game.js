@@ -13,15 +13,18 @@ class Game {
         this.oops_sfx = document.querySelector('.oops-sfx')
     }
     rank(score) {
-        if(localStorage.length == 0) {
-            localStorage.setItem('ranking', `[${score}]`)
-        } else {
-            let result = localStorage.getItem('ranking')
-            result = JSON.parse(result)
-            result.push(score)
-            result = JSON.stringify(result)
-            localStorage.setItem('ranking', result)
-        }
+        if(localStorage.length == 0) 
+            localStorage.setItem('ranking', `[]`)
+        let result = localStorage.getItem('ranking')
+        result = JSON.parse(result)
+        result = Array.from(result)
+        result.push({
+            time:  new Date().toLocaleTimeString(),
+            score: score
+        })
+        result = JSON.stringify(result)
+        localStorage.setItem('ranking', result)
+        display()
     }
     
     collision() {

@@ -1,7 +1,7 @@
 class Snake {
     constructor() {
-        this.body = [new Head()]
-        // , new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
+        this.body = [new Head()
+        , new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece(), new Piece()]
     }
     grow = () => this.body.push(new Piece())
     eat = (fruit) => this.body[0].hit(fruit)
