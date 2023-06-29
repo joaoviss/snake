@@ -1,15 +1,17 @@
 const display = () => {
     if (localStorage) {
-        let ranking = localStorage.getItem('ranking')
-        ranking = JSON.parse(ranking)
-        ranking = Array.from(ranking)
-        RANKING.innerHTML = ''
-        for (let i = 0; i < 12; i++) {
-            if (ranking[i] != undefined) {
-                let template = document.querySelector('.template').innerHTML
-                template = template.replace('$time', ranking[i].time)
-                template = template.replace('$score', ranking[i].score)
-                RANKING.innerHTML += template
+        if (localStorage.length != 0) {
+            let ranking = localStorage.getItem('ranking')
+            ranking = JSON.parse(ranking)
+            ranking = Array.from(ranking)
+            RANKING.innerHTML = '<li><span>hora</span><span>pontos</span></li>'
+            for (let i = 0; i < 12; i++) {
+                if (ranking[i] != undefined) {
+                    let template = document.querySelector('.template').innerHTML
+                    template = template.replace('$time', ranking[i].time)
+                    template = template.replace('$score', ranking[i].score)
+                    RANKING.innerHTML += template
+                }
             }
         }
     }
