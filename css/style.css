@@ -53,6 +53,7 @@ body {
 }
 .controls {
     display: inline-grid;
+    gap: 0.4rem;
     grid-template-rows: 2;
     grid-template-columns: 3;
     grid-template-areas: '. u .' 'l d r';
@@ -147,7 +148,7 @@ body {
         grid-template-rows: 3;
         grid-template-columns: 3;
         grid-template-areas: '. u .' 'l s r' '. d .';
-        gap: 0.4rem;
+        gap: 0;
     }
     .btn-start {
         grid-area: s;

@@ -37,8 +37,10 @@ class Game {
          if ((this.snake.crash()) || (this.snake.out())) {
             this.death_sfx.play()
             this.paused = true
-            setTimeout(() => this.paused = false, 1000)
-            this.snake.reset()
+            setTimeout(() => {
+                this.paused = false
+                this.snake.reset()
+            }, 1000)
             this.lifeBoard.innerHTML = --this.lives
         }
     }
